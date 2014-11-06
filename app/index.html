@@ -6,6 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>My AngularJS App</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,18 +18,27 @@
 
   <!-- Default Kendo UI theme CSS -->
   <link href="bower_components/kendo-ui-core/styles/kendo.default.min.css" rel="stylesheet" />
+  <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
+<body ng-controller="MyAppController">
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
 
-  <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
-
-  <div ng-view></div>
+{{loggedInUser}}
+<ul kendo-menu>
+  <li><a href="#/view1">view1</a></li>
+  <li><a href="#/view2">view2</a></li>
+</ul>
+<div kendo-splitter>
+  <div>
+    <ul kendo-menu k-orientation="'vertical'" k-data-source="[{text:'Hello1',url:'//www.google.com'}, {text:'Hello2'}]">
+    </ul>
+  </div>
+  <div>
+    <div ng-view></div>
+  </div>
+</div>
 
   <div>Angular seed app: v<span app-version></span></div>
 
@@ -46,5 +56,6 @@
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
